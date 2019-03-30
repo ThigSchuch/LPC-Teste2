@@ -1,0 +1,18 @@
+<h1>Lista de Agendas Públicas</h1>
+
+{% for Agendas in object_list %}
+    {% if not Agendas.visibilidade %}
+
+        <div style="margin-left:50px;margin-right:50px"> 
+            <h2>{{ Agendas.nome }}</h2>
+            <p>Privada? <b>{{ Agendas.visibilidade }}</b></p>
+            Compromissos    
+            <ul>
+                {{ Agendas.compromisso.all | join:"<br>"}}            
+            </ul>
+        
+            <p>Agenda criada por {{ Agendas.criador }}</p>
+        </div>
+        <hr>
+    {% endif %}
+{% endfor %}
